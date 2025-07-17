@@ -1,73 +1,225 @@
 body {
   font-family: system-ui, sans-serif;
-  background: #181c20;
-  color: #f3f3f3;
+  background: #101613;
+  color: #d0ffd6;
   margin: 0;
-  padding: 0;
+  min-height: 100vh;
 }
+
 .container {
-  max-width: 700px;
-  margin: 2rem auto;
-  background: #23272e;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px #0008;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 2rem;
 }
-header, footer {
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00ff88 0%, #008844 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+header p {
+  color: #7fffb2;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.controls {
+  background: #16211a;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 2px 16px #003a1a44;
+  margin-bottom: 2rem;
+}
+
+.playback-controls {
   text-align: center;
   margin-bottom: 1.5rem;
 }
-header h1 {
-  margin: 0 0 0.5rem 0;
-  font-size: 2.2rem;
-}
-.controls {
-  margin-bottom: 2rem;
-}
-.file-input-section, .playback-controls, .orientation-controls, .manual-controls {
-  margin-bottom: 1.2rem;
-}
-button {
-  background: #3a8fff;
-  color: #fff;
+
+.playback-controls button {
+  background: linear-gradient(90deg, #00ff88 0%, #008844 100%);
+  color: #101613;
   border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1.2rem;
-  margin-right: 0.5rem;
-  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.8rem 2rem;
+  margin: 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
-button:disabled {
-  background: #555a;
+
+.playback-controls button:disabled {
+  background: #23382a;
+  color: #5a7f6a;
   cursor: not-allowed;
 }
-input[type="range"] {
-  width: 180px;
-  margin: 0 0.5rem;
+
+.file-info {
+  color: #7fffb2;
+  font-size: 0.95rem;
+  margin-top: 1rem;
 }
+
+.orientation-controls {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.orientation-controls button {
+  background: #23382a;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.orientation-controls button:hover {
+  background: #00ff88;
+  color: #101613;
+}
+
+.orientation-status {
+  margin-top: 1rem;
+  color: #00ff88;
+  font-size: 0.95rem;
+}
+
+.manual-controls h3 {
+  color: #00ff88;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.rotation-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .slider-group {
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
+  gap: 1rem;
+  background: #1a2a1e;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
 }
+
+.slider-group label {
+  color: #baffc9;
+  min-width: 90px;
+}
+
+.slider-group input[type="range"] {
+  flex: 1;
+  accent-color: #00ff88;
+}
+
+.slider-group span {
+  color: #00ff88;
+  min-width: 40px;
+  text-align: right;
+}
+
 .visualization {
-  margin-top: 2rem;
-  background: #1a1d22;
-  border-radius: 8px;
-  padding: 1rem;
+  background: #16211a;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 2px 16px #003a1a44;
+  margin-bottom: 2rem;
 }
+
+.orientation-display h3,
+.audio-info h3 {
+  color: #00ff88;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
 .orientation-values {
   display: flex;
-  gap: 2rem;
-  justify-content: center;
-  margin-bottom: 1rem;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
+
+.orientation-value {
+  text-align: center;
+  padding: 1rem;
+  background: #1a2a1e;
+  border-radius: 8px;
+  min-width: 90px;
+}
+
 .orientation-value .label {
-  font-weight: bold;
-  margin-right: 0.3rem;
+  display: block;
+  font-size: 0.8rem;
+  color: #7fffb2;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
+.orientation-value span:not(.label) {
+  display: block;
+  font-size: 1.2em;
+  color: #00ff88;
+  font-weight: 700;
+}
+
 .audio-info {
   text-align: center;
-  margin-top: 1rem;
+  padding: 1rem;
+  background: #1a2a1e;
+  border-radius: 8px;
+  color: #baffc9;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  color: #5a7f6a;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  .controls {
+    padding: 1rem;
+  }
+  .playback-controls button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  .orientation-values {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .slider-group {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
 } 

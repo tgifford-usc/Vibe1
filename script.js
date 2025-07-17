@@ -183,19 +183,39 @@ rollSlider.addEventListener('input', (e) => {
   if (!orientationEnabled) setRotation(currentYaw, currentPitch, e.target.value);
 });
 
-enableOrientationBtn.addEventListener('click', () => {
+function setOrientationStatus(msg, ok = true) {
+  orientationStatus.textContent = msg;
+  orientationStatus.style.color = ok ? '#00ff88' : '#ff5555';
+}
+
+enableOrientationBtn.addEventListener('click', async () => {
   if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
-    DeviceOrientationEvent.requestPermission().then(permissionState => {
+    // iOS 13+
+    try {
+      const permissionState = await DeviceOrientationEvent.requestPermission();
       if (permissionState === 'granted') {
         orientationEnabled = true;
-        orientationStatus.textContent = 'Orientation: Enabled';
+        setOrientationStatus('Orientation: Enabled');
         disableManualControls();
+      } else {
+        orientationEnabled = false;
+        setOrientationStatus('Orientation: Permission Denied', false);
+        enableManualControls();
       }
-    });
-  } else {
+    } catch (err) {
+      orientationEnabled = false;
+      setOrientationStatus('Orientation: Permission Error', false);
+      enableManualControls();
+    }
+  } else if ('ondeviceorientationabsolute' in window || 'ondeviceorientation' in window) {
+    // Android/other browsers
     orientationEnabled = true;
-    orientationStatus.textContent = 'Orientation: Enabled';
+    setOrientationStatus('Orientation: Enabled');
     disableManualControls();
+  } else {
+    orientationEnabled = false;
+    setOrientationStatus('Orientation: Not Supported', false);
+    enableManualControls();
   }
 });
 
