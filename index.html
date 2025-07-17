@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vibe1 - Ambisonic Audio Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/external_hosted/omnitone/build/omnitone.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vibe1</h1>
+            <p>Ambisonic Audio with Device Orientation</p>
+        </header>
+        <main>
+            <div class="controls">
+                <div class="playback-controls">
+                    <button id="playSampleButton">Play Sample</button>
+                    <button id="stopButton" disabled>Stop</button>
+                    <p class="file-info">Playing sample.wav (First Order Ambisonics)</p>
+                </div>
+                <div class="orientation-controls">
+                    <button id="enableOrientation">Enable Device Orientation</button>
+                    <button id="resetOrientation">Reset Orientation</button>
+                    <div class="orientation-status">
+                        <span id="orientationStatus">Orientation: Disabled</span>
+                    </div>
+                </div>
+                <div class="manual-controls">
+                    <h3>Manual Rotation Controls</h3>
+                    <div class="rotation-sliders">
+                        <div class="slider-group">
+                            <label for="yawSlider">Yaw (Left/Right):</label>
+                            <input type="range" id="yawSlider" min="-180" max="180" value="0" step="1">
+                            <span id="yawValue">0°</span>
+                        </div>
+                        <div class="slider-group">
+                            <label for="pitchSlider">Pitch (Up/Down):</label>
+                            <input type="range" id="pitchSlider" min="-90" max="90" value="0" step="1">
+                            <span id="pitchValue">0°</span>
+                        </div>
+                        <div class="slider-group">
+                            <label for="rollSlider">Roll (Tilt):</label>
+                            <input type="range" id="rollSlider" min="-180" max="180" value="0" step="1">
+                            <span id="rollValue">0°</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="orientation-display">
+                    <h3>Current Orientation</h3>
+                    <div class="orientation-values">
+                        <div class="orientation-value">
+                            <span class="label">Yaw:</span>
+                            <span id="currentYaw">0°</span>
+                        </div>
+                        <div class="orientation-value">
+                            <span class="label">Pitch:</span>
+                            <span id="currentPitch">0°</span>
+                        </div>
+                        <div class="orientation-value">
+                            <span class="label">Roll:</span>
+                            <span id="currentRoll">0°</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-info">
+                    <h3>Audio Information</h3>
+                    <div id="audioInfo">No audio loaded</div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>Use device orientation or manual controls to navigate the ambisonic soundfield</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

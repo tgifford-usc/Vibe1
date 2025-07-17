@@ -1,0 +1,73 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #181c20;
+  color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: #23272e;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #0008;
+  padding: 2rem;
+}
+header, footer {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.2rem;
+}
+.controls {
+  margin-bottom: 2rem;
+}
+.file-input-section, .playback-controls, .orientation-controls, .manual-controls {
+  margin-bottom: 1.2rem;
+}
+button {
+  background: #3a8fff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:disabled {
+  background: #555a;
+  cursor: not-allowed;
+}
+input[type="range"] {
+  width: 180px;
+  margin: 0 0.5rem;
+}
+.slider-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.visualization {
+  margin-top: 2rem;
+  background: #1a1d22;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.orientation-values {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.orientation-value .label {
+  font-weight: bold;
+  margin-right: 0.3rem;
+}
+.audio-info {
+  text-align: center;
+  margin-top: 1rem;
+} 
